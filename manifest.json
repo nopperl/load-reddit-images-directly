@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Load Reddit Images Directly",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Loads reddit images directly instead of referring to the HTML page containing the image.",
   "permissions": [
     "webRequest",
