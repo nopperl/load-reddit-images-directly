@@ -3,7 +3,7 @@ function modifyAcceptHeader(details) {
     if (header.name.toLowerCase() === 'accept') {
       return {
         name: header.name,
-        value: 'image/*'
+        value: 'image/avif,image/webp,*/*'
       };
     }
     return header;
