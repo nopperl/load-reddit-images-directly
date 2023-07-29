@@ -12,9 +12,9 @@ function modifyAcceptHeader(details) {
   return { requestHeaders: newHeaders };
 }
 
-chrome.webRequest.onBeforeSendHeaders.addListener(
+browser.webRequest.onBeforeSendHeaders.addListener(
   modifyAcceptHeader,
-  { urls: ['*://i.redd.it/*', '*://preview.redd.it/*'] },
+  { urls: ['*://i.redd.it/*', '*://external-preview.redd.it/*', '*://preview.redd.it/*'] },
   ['blocking', 'requestHeaders']
 );
 
