@@ -1,3 +1,5 @@
+let redirectToOriginalImageEnabled = false;
+
 function redirect(details) {
   const url = new URL(details.url);
   const targetURL = url.searchParams.get("url");
@@ -5,6 +7,14 @@ function redirect(details) {
     return {
       redirectUrl: targetURL
     };
+  }
+}
+
+function redirectToOriginalImage(details) {
+  if (redirectToOriginalImageEnabled) {
+    var url = new URL(details.url);
+    url.hostname = "i.redd.it";
+    return {redirectUrl: url.toString()};
   }
 }
 
@@ -22,11 +32,27 @@ function modifyAcceptHeader(details) {
   return { requestHeaders: newHeaders };
 }
 
+checkSetting();
+function checkSetting() {
+  browser.storage.local.get('redirectToOriginalImage', function(result) {
+    redirectToOriginalImageEnabled = result.redirectToOriginalImage
+  });
+}
+
+browser.storage.onChanged.addListener(checkSetting);
+
 browser.webRequest.onBeforeRequest.addListener(
   redirect,
   { urls: ["*://www.reddit.com/media*"], types: ["main_frame"] },
   ["blocking"]
 );
+
+browser.webRequest.onBeforeRequest.addListener(
+  redirectToOriginalImage,
+  { urls: ['*://external-preview.redd.it/*', '*://preview.redd.it/*'], types: ["main_frame"] },
+  ["blocking"]
+);
+
 browser.webRequest.onBeforeSendHeaders.addListener(
   modifyAcceptHeader,
   { urls: ['*://i.redd.it/*', '*://external-preview.redd.it/*', '*://preview.redd.it/*'] },
