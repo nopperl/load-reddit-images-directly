@@ -49,7 +49,7 @@ browser.webRequest.onBeforeRequest.addListener(
 
 browser.webRequest.onBeforeRequest.addListener(
   redirectToOriginalImage,
-  { urls: ['*://external-preview.redd.it/*', '*://preview.redd.it/*'], types: ["main_frame"] },
+  { urls: ["*://preview.redd.it/*"], types: ["main_frame"] },
   ["blocking"]
 );
 
