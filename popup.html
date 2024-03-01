@@ -3,15 +3,18 @@
   <title>Load Reddit Images Directly</title>
   <style>
     body {
-      width: 200px;
-      height: 200px;
+      width: 20em;
+      height: 10em;
     }
   </style>
 </head>
 <body>
   <h1>Settings</h1>
-  <label for="redirectToOriginalImage">Redirect preview images to the original image URL (i.redd.it) if possible</label>
   <input type="checkbox" id="redirectToOriginalImage">
+  <label for="redirectToOriginalImage">Redirect preview images to the original image URL (i.redd.it) if possible</label>
+  <br>
+  <input type="checkbox" id="disableLightbox">
+  <label for="disableLightbox">Load image URL instead of lightbox</label>
   <script src="popup.js"></script>
 </body>
 </html>
