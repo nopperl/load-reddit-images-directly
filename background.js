@@ -1,4 +1,5 @@
 let redirectToOriginalImageEnabled = false;
+let useOldAccept = false;
 
 function redirect(details) {
   const url = new URL(details.url);
@@ -19,11 +20,16 @@ function redirectToOriginalImage(details) {
 }
 
 function modifyAcceptHeader(details) {
+  if (useOldAccept) {
+    acceptValue = "image/png,image/*;q=0.8,*/*;q=0.5";
+  } else {
+    acceptValue = "image/avif,image/webp,*/*"
+  }
   let newHeaders = details.requestHeaders.map(header => {
     if (header.name.toLowerCase() === 'accept') {
       return {
         name: header.name,
-        value: 'image/avif,image/webp,*/*'
+        value: acceptValue
       };
     }
     return header;
@@ -36,6 +42,9 @@ checkSetting();
 function checkSetting() {
   browser.storage.local.get('redirectToOriginalImage', function(result) {
     redirectToOriginalImageEnabled = result.redirectToOriginalImage
+  });
+  browser.storage.local.get('useOldAccept', function(result) {
+    useOldAccept = result.useOldAccept
   });
 }
 

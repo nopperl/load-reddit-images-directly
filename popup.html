@@ -4,7 +4,7 @@
   <style>
     body {
       width: 20em;
-      height: 10em;
+      height: 17em;
     }
   </style>
 </head>
@@ -12,6 +12,9 @@
   <h1>Settings</h1>
   <input type="checkbox" id="redirectToOriginalImage">
   <label for="redirectToOriginalImage">Redirect preview images to the original image URL (i.redd.it) if possible</label>
+  <br>
+  <input type="checkbox" id="useOldAccept">
+  <label for="useOldAccept">Use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation/List_of_default_Accept_values#values_for_an_image">old Accept header used by Firefox prior to 47</a>, which does not have a preference for WebP.
   <br>
   <input type="checkbox" id="disableLightbox">
   <label for="disableLightbox">Load image URL instead of lightbox (only on "/r/SUBREDDIT_NAME/comments/" pages, does not affect old.reddit.com)</label>

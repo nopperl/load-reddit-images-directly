@@ -8,7 +8,6 @@ function replaceLightboxElementWithAnchor() {
   browser.storage.local.get('disableLightbox', function(result) {
     if (result.disableLightbox) {
       const images = document.querySelectorAll('img.media-lightbox-img');
-      console.log(images);
       for (let i = 0; i < images.length; i++) {
         const img = images[i];
 	if (img.parentNode.nodeName == "A") {
