@@ -15,8 +15,6 @@ function redirectToOriginalImage(details) {
   if (redirectToOriginalImageEnabled) {
     var url = new URL(details.url);
     url.hostname = "i.redd.it";
-    // Remove superfluous URL parameters of i.redd.it URLs to retrieve image directly
-    url.search = "";
     return {redirectUrl: url.toString()};
   }
 }
