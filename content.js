@@ -10,11 +10,18 @@ function replaceLightboxElementWithAnchor() {
       const images = document.querySelectorAll('img.media-lightbox-img');
       for (let i = 0; i < images.length; i++) {
         const img = images[i];
-	if (img.parentNode.nodeName == "A") {
-	  continue;
-	}
+        if (img.parentNode.nodeName == "A") {
+          continue;
+        }
+        if (img.hasAttribute('src')) {
+          var src = img.getAttribute('src');
+        } else if (img.hasAttribute('data-lazy-src')) {
+          var src = img.getAttribute('data-lazy-src');
+        } else {
+          continue;
+        }
         const a = document.createElement('a');
-        a.setAttribute('href', img.getAttribute('src'));
+        a.setAttribute('href', src);
         img.parentNode.insertBefore(a, img);
         a.appendChild(img);
       }
