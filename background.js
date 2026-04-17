@@ -58,12 +58,12 @@ browser.webRequest.onBeforeRequest.addListener(
 
 browser.webRequest.onBeforeRequest.addListener(
   redirectToOriginalImage,
-  { urls: ["*://preview.redd.it/*"], types: ["main_frame"] },
+  { urls: ["*://preview.redd.it/*", '*://cf.preview.redd.it/*'], types: ["main_frame"] },
   ["blocking"]
 );
 
 browser.webRequest.onBeforeSendHeaders.addListener(
   modifyAcceptHeader,
-  { urls: ['*://i.redd.it/*', '*://external-preview.redd.it/*', '*://preview.redd.it/*'] },
+  { urls: ['*://i.redd.it/*', '*://external-preview.redd.it/*', '*://preview.redd.it/*', '*://cf.preview.redd.it/*'] },
   ['blocking', 'requestHeaders']
 );

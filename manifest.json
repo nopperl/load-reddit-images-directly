@@ -11,6 +11,7 @@
     "*://i.redd.it/*",
     "*://external-preview.redd.it/*",
     "*://preview.redd.it/*",
+    "*://cf.preview.redd.it/*",
     "*://www.reddit.com/*"
   ],
   "background": {
